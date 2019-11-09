@@ -1,0 +1,28 @@
+html, body, #main { 
+   height: 100%;
+}
+
+#top{
+	float: top;
+	height: 80px;
+	min-width:100%;
+	border-bottom: solid;
+}
+
+.container-fluid{
+	min-width: 1050px;
+	margin: 0;
+	padding: 0;
+}
+canvas{
+	height:100%;
+	width: 100%;
+}
+
+#canvasStation,#formStation{
+	height: 100%;
+}
+
+#formStation{
+	border-left: solid;
+}
