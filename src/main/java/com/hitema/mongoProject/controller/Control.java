@@ -13,15 +13,18 @@ import com.hitema.mongoProject.service.AlgoService;
 @Controller
 public class Control {
 
-    @GetMapping("/index")
-    public String index(@RequestParam(name="name", required = false, defaultValue = "World")String name, Model model) {
-        model.addAttribute("name", name);
-        return "index";
-    }
-	
+	@GetMapping("/index")
+	public String index(Model model,
+			@RequestParam(name="start", required = false, defaultValue = "start")String start,
+			@RequestParam(name="end", required = false, defaultValue = "end")String end) {
+		model.addAttribute("start", start);
+		model.addAttribute("end", end);
+		return "index";
+	}
+
 	@Autowired
-    private AlgoService algoService;
-	
+	private AlgoService algoService;
+
 	@GetMapping("/graphe")
 	public String createAndGetGraphe(Model model) {
 		int tailleGraphe = 10;

@@ -28,7 +28,6 @@ canvas {
 #canvasStation {
 	height: 100%;	
 	box-shadow: inset -5px 5px 20px grey;
-	padding: 50px;
 }
 
 #formStation {
