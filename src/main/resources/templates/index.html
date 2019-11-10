@@ -19,22 +19,22 @@
 		<div class="col d-flex container-fluid justify-content-center align-items-center" id="canvasStation">
 			<!-- <canvas id="canvasTrajet">
 			</canvas> -->
-			<table class="table">
+			<table>
 				<tr>
-					<th></td>
+					<th></th>
 					<th th:each="pt: ${pts}">
-						<p th:text="${pt}"/>
+						<span th:text="${pt}"/>
 					</th>
 				</tr>
 				<tr th:each="ligneGraphe: ${graphe}">
-					<td></td>
+					<th></th>
 					<td th:each="pointGraphe: ${ligneGraphe}">
-						<p th:text="${pointGraphe}"/>
+						<span th:text="${pointGraphe}"/>
 					</td>
 				</tr>
 			</table>
 		</div>
-		<div class="col-3 d-flex justify-content-center align-items-center" id="formStation">
+		<div class="col-3 d-flex justify-content-center align-items-center flex-column" id="formStation">
 			<form>
 				<div class="form-group">
 					<label for="startStationInput">Départ</label>
@@ -45,6 +45,13 @@
 					<input type="text" name="end" class="form-control" id="endStationInput" placeholder="Station d'arriver">
 				</div>
 				<button class="btn btn-primary" type="submit">C'est parti</button>
+			</form>
+			<form>
+				<div class="form-group">
+					<label for="nbPointInput">Nombre de points</label>
+					<input type="text" name="nbPoint" class="form-control" id="nbPointInput" placeholder="10" th:value="${nbPoint}">
+				</div>
+				<button class="btn btn-primary" type="submit">Generer</button>
 			</form>
 		</div>
 	</div>

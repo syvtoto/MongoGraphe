@@ -21,16 +21,17 @@ public class Control {
 	@GetMapping("/index")
 	public String index(Model model,
 			@RequestParam(name="start", required = false)String start,
-			@RequestParam(name="end", required = false)String end) {
-		int tailleGraphe = 10;
+			@RequestParam(name="end", required = false)String end,
+			@RequestParam(name="nbPoint", required = false, defaultValue = "10" )int nbPoint) {
 		ArrayList<Integer> lInteg = new ArrayList<Integer>();
-		for(int l=0;l<tailleGraphe;l++) {
+		for(int l=0;l<nbPoint;l++) {
 			lInteg.add(l);
 		}
 		model.addAttribute("pts",lInteg);		
-		model.addAttribute("graphe", algoService.generateGraphe(tailleGraphe));
+		model.addAttribute("graphe", algoService.generateGraphe(nbPoint));
 		model.addAttribute("start", start);
 		model.addAttribute("end", end);
+		model.addAttribute("nbPoint", nbPoint);
 		return "index";
 	}
 
