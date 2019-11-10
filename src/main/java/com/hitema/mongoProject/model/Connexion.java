@@ -3,32 +3,24 @@ package com.hitema.mongoProject.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "Signalement")
-public class Signalement {
+@Document(collection = "Connexion")
+public class Connexion {
 	@Id
 	private String id;
 	
-	private String user;
 	private String stationDepart;
 	private String stationArrivee;
+	private String poids;
 	
-	public Signalement() {
+	public Connexion() {
 		super();
 	}
 
-	public Signalement(String user, String stationDepart, String stationArrivee) {
+	public Connexion(String stationDepart, String stationArrivee, String poids) {
 		super();
-		this.user = user;
 		this.stationDepart = stationDepart;
 		this.stationArrivee = stationArrivee;
-	}
-
-	public String getUser() {
-		return user;
-	}
-
-	public void setUser(String user) {
-		this.user = user;
+		this.poids = poids;
 	}
 
 	public String getStationDepart() {
@@ -47,9 +39,17 @@ public class Signalement {
 		this.stationArrivee = stationArrivee;
 	}
 
+	public String getPoids() {
+		return poids;
+	}
+
+	public void setPoids(String poids) {
+		this.poids = poids;
+	}
+
 	@Override
 	public String toString() {
-		return "Signalement [id=" + id + ", user=" + user + ", stationDepart=" + stationDepart + ", stationArrivee="
-				+ stationArrivee + "]";
+		return "Connexion [id=" + id + ", stationDepart=" + stationDepart + ", stationArrivee=" + stationArrivee
+				+ ", poids=" + poids + "]";
 	}
 }
