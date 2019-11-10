@@ -8,7 +8,7 @@ public class User {
 	@Id
 	private String id;
 	
-	private String sexe;
+	private String civilité;
 	private String nom;
 	private String prenom;
 	private String dateNaissance;
@@ -22,7 +22,7 @@ public class User {
 
 	public User(String sexe, String nom, String prenom, String dateNaissance, String adresse, String mail, String mdp) {
 		super();
-		this.sexe = sexe;
+		this.civilité = sexe;
 		this.nom = nom;
 		this.prenom = prenom;
 		this.dateNaissance = dateNaissance;
@@ -32,11 +32,11 @@ public class User {
 	}
 	
 	public String getSexe() {
-		return sexe;
+		return civilité;
 	}
 	
 	public void setSexe(String sexe) {
-		this.sexe = sexe;
+		this.civilité = sexe;
 	}
 	
 	public String getNom() {
@@ -89,7 +89,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", sexe=" + sexe + ", nom=" + nom + ", prenom=" + prenom + ", dateNaissance="
+		return "User [id=" + id + ", sexe=" + civilité + ", nom=" + nom + ", prenom=" + prenom + ", dateNaissance="
 				+ dateNaissance + ", adresse=" + adresse + ", mail=" + mail + ", mdp=" + mdp + "]";
 	}
 }
