@@ -11,14 +11,28 @@
 <link type="text/css" href="/css/style.css" rel="stylesheet" />
 <script src="/js/canvas.js"></script>
 </head>
-<body class="container-fluid d-flex flex-column justify-content-center align-items-center" onload="draw();">
+<body class="container-fluid d-flex flex-column justify-content-center align-items-center" >
 	<div id="top" class="d-flex justify-content-around align-items-center">
-		<p th:text="${start}"/><p th:text="${end}"/>
+		<h1>Départ: <span th:text="${start}"></span></h1><h1>Arrivée: <span th:text="${end}"></span></h1>
 	</div>
 	<div class="container-fluid d-flex justify-content-center align-items-center" id="main">
 		<div class="col d-flex container-fluid justify-content-center align-items-center" id="canvasStation">
-			<canvas id="canvasTrajet">
-			</canvas>
+			<!-- <canvas id="canvasTrajet">
+			</canvas> -->
+			<table class="table">
+				<tr>
+					<td></td>
+					<td th:each="pt: ${pts}">
+						<p th:text="${pt}"/>
+					</td>
+				</tr>
+				<tr th:each="ligneGraphe: ${graphe}">
+					<td>
+						<p th:text="${graphe.indexOf(ligneGraphe)}"/>
+					</td>
+					<!-- <td><p th:text="${ligneGraphe}"/></td> -->
+				</tr>
+			</table>
 		</div>
 		<div class="col-3 d-flex justify-content-center align-items-center" id="formStation">
 			<form>

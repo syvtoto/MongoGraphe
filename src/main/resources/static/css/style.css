@@ -24,10 +24,15 @@ canvas {
 	height: 100%;
 	width: 100%;
 }
+.table{
+	height: 100%;
+	width: 100%;
+}
 
 #canvasStation {
 	height: 100%;	
 	box-shadow: inset -5px 5px 20px grey;
+	padding: 50px;
 }
 
 #formStation {
