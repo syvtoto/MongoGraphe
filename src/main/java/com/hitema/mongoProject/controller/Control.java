@@ -1,7 +1,8 @@
 package com.hitema.mongoProject.controller;
 
-import java.awt.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.websocket.server.PathParam;
 
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.hitema.mongoProject.model.Station;
 import com.hitema.mongoProject.model.StationLigne;
 import com.hitema.mongoProject.service.AlgoService;
 import com.hitema.mongoProject.service.DataService;
@@ -26,7 +28,7 @@ public class Control {
 	@GetMapping("/graphe")
 	public String createAndGetGraphe(Model model) {
 		int tailleGraphe = 10;
-		ArrayList<Integer> lInteg = new ArrayList<Integer>();
+		List<Integer> lInteg = new ArrayList<Integer>();
 		for(int l=0;l<tailleGraphe;l++) {
 			lInteg.add(l);
 		}
@@ -48,6 +50,22 @@ public class Control {
 		int[][] graphe = algoService.generateGraphe(10);
 		dataService.saveGraphe(graphe, algoService.generateListStation(graphe.length));
 		model.addAttribute("textToDisplay","graphe saved to mongo");
+		return "default";
+	}
+	
+	@GetMapping("/getAllStations")
+	public String getAllStations(Model model) {
+		List<Station> allStations = dataService.getAllStations();
+		System.out.println(allStations.toString());
+		model.addAttribute("textToDisplay","getting all stations");
+		return "default";
+	}
+	
+	@GetMapping("/getGraphe")
+	public String getGraphe(Model model) {
+		int[][] graphe = dataService.getGraphe();
+		System.out.println(graphe.toString());
+		model.addAttribute("textToDisplay","getting graphe");
 		return "default";
 	}
 }

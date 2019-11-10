@@ -1,5 +1,7 @@
 package com.hitema.mongoProject.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -57,5 +59,41 @@ public class DataService {
 				}
 			}
 		}
+	}
+	
+	public List<Station> getAllStations() {
+		List<Station> allStations = stationRepo.findAll();
+		return allStations;
+	}
+	
+	public int[][] getGraphe() {
+		List<Connexion> allConns = connexionRepo.findAll();
+		List<Station> allStations = stationRepo.findAll();
+		int[][] graphe = new int[allStations.size()][allStations.size()];
+		for(int i=0;i<allStations.size();i++) {
+			int[] listInt = new int[allStations.size()];
+			for(int j=0;j<allStations.size();j++) {
+				listInt[i] = 0;
+			}
+			graphe[i] = listInt;
+		}
+		for(Connexion conn: allConns) {
+			String dep = conn.getStationDepart();
+			String arr = conn.getStationArrivee();
+			int indexDep = -1;
+			int indexArr = -1;
+			for(Station station : allStations) {
+		        if(station.getNom().equals(dep)) {
+		        	indexDep = allStations.indexOf(station);
+		        }
+		    }
+			for(Station station : allStations) {
+		        if(station.getNom().equals(arr)) {
+		        	indexArr = allStations.indexOf(station);
+		        }
+		    }
+			graphe[indexDep][indexArr] = Integer.valueOf(conn.getPoids());
+		}
+		return graphe;
 	}
 }
